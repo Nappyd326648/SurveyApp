@@ -17,11 +17,26 @@ public class MainActivity extends AppCompatActivity {
     int myes;
     int mno;
 
+    private final static String yes="yes";
+    private final static String no="no";
+
+    @Override
+    protected void onSaveInstanceState(Bundle outBundle){
+        outBundle.putInt(yes,myes);
+        outBundle.putInt(no,mno);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(savedInstanceState != null){
+            myes = savedInstanceState.getInt(yes);
+            mno = savedInstanceState.getInt(no);
+
+        }
+
 
 // Assigns buttons to activity_main,xml
         Button yes =(Button) findViewById(R.id.answerYes);
